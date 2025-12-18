@@ -294,6 +294,43 @@
         </main>
     </div>
 
+    <!-- Contract Template (Embedded to avoid fetch issues) -->
+    <script type="text/template" id="contract-template">
+        <style>
+            .contract-wrapper { background: #fdfdfd; color: #111; font-family: 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: 0 auto; border: 1px solid #ddd; min-height: 100vh; }
+            .header { text-align: center; border-bottom: 3px solid #eab308; padding-bottom: 20px; margin-bottom: 40px; font-family: 'Inter', sans-serif; }
+            .logo { font-size: 24px; font-weight: bold; text-transform: uppercase; }
+            .accent { color: #eab308; }
+            .title { font-size: 20px; margin-top: 10px; font-weight: bold; }
+            .content { line-height: 1.6; font-size: 16px; }
+            .section { margin-bottom: 20px; }
+            .footer-sig { margin-top: 80px; display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; }
+            .sign-box { border-top: 1px solid #000; width: 45%; padding-top: 10px; }
+        </style>
+        <div class="contract-wrapper">
+            <div class="header">
+                <div class="logo">Ascended<span class="accent">.Academy</span></div>
+                <div class="title">NON-DISCLOSURE & CONFIDENTIALITY AGREEMENT</div>
+            </div>
+            <div class="content">
+                <div class="section"><p><strong>THIS AGREEMENT</strong> (the "Agreement") is entered into on this day by and between <strong>Ascended Academy</strong> (the "Disclosing Party") and the Student (the "Receiving Party").</p></div>
+                <div class="section"><p><strong>1. Confidential Information</strong><br>The Receiving Party acknowledges that they will have access to proprietary strategies, sales scripts, marketing funnels, and internal documents (collectively, "Confidential Information").</p></div>
+                <div class="section"><p><strong>2. Obligations</strong><br>The Receiving Party agrees to:<br>a) Maintain the strict confidentiality of all Confidential Information.<br>b) Not share, copy, or distribute any materials to third parties.<br>c) Use the information solely for personal educational purposes within the Academy.</p></div>
+                <div class="section"><p><strong>3. Breach & Termination</strong><br>Any unauthorized disclosure will result in immediate termination of membership and potential legal action for damages.</p></div>
+                <div class="section"><p><strong>4. Intellectual Property</strong><br>All content remains the intellectual property of Ascended Academy.</p></div>
+            </div>
+            <div class="footer-sig">
+                <div class="sign-box">
+                    <strong>Signed by Student:</strong><br><br>
+                    X __________________________<br>
+                    <span style="font-size: 0.8rem; color: #666;">(Signature)</span>
+                    <br><br>
+                    Date: ______________________
+                </div>
+            </div>
+        </div>
+    </script>
+
     <script src="app.js"></script>
 </body>
 

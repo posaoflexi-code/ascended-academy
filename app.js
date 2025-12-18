@@ -155,17 +155,15 @@ document.addEventListener('DOMContentLoaded', () => {
             downloadBtn.disabled = true;
 
             try {
-                // Fetch the contract template
-                const response = await fetch('contract.html');
-                const htmlText = await response.text();
+                // Get embedded template content (No fetch required)
+                const htmlText = document.getElementById('contract-template').innerHTML;
 
                 // Create a temporary container off-screen
-                // We must append to body for styles/layout to compute, but hiding it from view
                 const container = document.createElement('div');
                 container.style.position = 'absolute';
                 container.style.left = '-9999px';
                 container.style.top = '0';
-                container.style.width = '800px'; // Force width to match contract style
+                container.style.width = '800px';
                 container.innerHTML = htmlText;
 
                 document.body.appendChild(container);
