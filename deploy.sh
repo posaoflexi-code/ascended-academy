@@ -22,4 +22,12 @@ fi
 echo "💾 Saving PM2 process list..."
 pm2 save
 
-echo "✅ Deployment Complete! App running on port 5005."
+echo "✅ Deployment Complete!"
+
+# Get Public IP
+PUBLIC_IP=$(curl -s ifconfig.me || echo "YOUR_SERVER_IP")
+
+echo "-----------------------------------------------------"
+echo "🌐 Your app is accessible at:"
+echo "   http://$PUBLIC_IP:5005/asc_academy"
+echo "-----------------------------------------------------"
