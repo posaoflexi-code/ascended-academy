@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascended Playbook / Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo">Ascended<span class="highlight" style="color:var(--accent-color)">.Academy</span></div>
+        </header>
+
+        <!-- Progress Wizard (Visible only during onboarding) -->
+        <div class="wizard-progress" id="wizard">
+            <div class="step-indicator active" data-step="1">
+                <div class="step-circle">1</div>
+                <span class="step-label">Register</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="2">
+                <div class="step-circle">2</div>
+                <span class="step-label">KYC</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="3">
+                <div class="step-circle">3</div>
+                <span class="step-label">NDA</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="4">
+                <div class="step-circle">4</div>
+                <span class="step-label">Academy</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+
+            <!-- Step 1: Registration -->
+            <section id="step-1" class="step-section active">
+                <div class="glass-card">
+                    <h2>Join the Elite</h2>
+                    <p class="subtitle">mock up demo</p>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Continue to Verification</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Step 2: KYC -->
+            <section id="step-2" class="step-section hidden">
+                <div class="glass-card">
+                    <h2>Identity Verification</h2>
+                    <p class="subtitle">Secure your spot in the Academy.</p>
+                    <div class="upload-zone" id="drop-zone">
+                        <div class="upload-icon">🆔</div>
+                        <h3>Upload Government ID</h3>
+                        <p>Drag & drop or click to browse</p>
+                        <input type="file" id="id-upload" hidden>
+                    </div>
+                    <div id="upload-progress" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Verifying legitimacy...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: NDA -->
+            <section id="step-3" class="step-section hidden">
+                <div class="glass-card">
+                    <h2>Non-Disclosure Agreement</h2>
+                    <p class="subtitle">What you learn here, stays here.</p>
+                    <div class="nda-legal-text">
+                        <p><strong>CONFIDENTIALITY AGREEMENT - ASCENDED PLAYBOOK</strong></p>
+                        <p>By signing this document, I agree to keep all strategies, scripts, and internal documents of
+                            Ascended Academy strictly confidential.</p>
+                        <p>I understand that these methods are high-value proprietary assets. Any unauthorized sharing
+                            will result in immediate termination and legal pursuit.</p>
+                        <p>The "Ascended" methodology is restricted to active members only.</p>
+                    </div>
+                    <div class="signature-area">
+                        <label>Sign with your full name:</label>
+                        <input type="text" id="signature-input" placeholder="e.g. John Doe">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="nda-check">
+                            <span class="checkmark"></span>
+                            I agree to the terms and conditions
+                        </label>
+                    </div>
+                    <button id="submit-nda" class="btn-primary" disabled>Sign & Enter Academy</button>
+                </div>
+            </section>
+
+            <!-- Step 4: Dashboard -->
+            <section id="step-4" class="step-section hidden">
+                <!-- Dashboard Header -->
+                <div class="dashboard-header glass-card">
+                    <h4>Welcome, <span class="highlight" style="color:var(--accent-color)">Member</span></h4>
+                    <p class="subtitle">Ascended Academy preview</p>
+                    <div class="progress-info">
+                        <span>Academy Progress: <strong id="prog-val">0%</strong></span>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="overall-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modules Grid -->
+                <h3 style="margin-bottom: 1rem; margin-top: 2rem;">Course Curriculum</h3>
+                <div class="modules-grid">
+                    <!-- Module 1 (Active) -->
+                    <div class="module-card active-module" id="module-1-card">
+                        <div class="module-center">🧠</div>
+                        <div class="module-content">
+                            <div class="module-title">Personality & Tone</div>
+                            <div class="module-meta">
+                                <span>Module 01</span>
+                                <span class="status-badge"
+                                    style="background:var(--accent-color); color:black;">Start</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="module-card locked">
+                        <div class="module-center">💬</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 101</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div class="module-card locked">
+                        <div class="module-center">💰</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 102</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="module-card locked">
+                        <div class="module-center">⏰</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 103</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="module-card locked">
+                        <div class="module-center">🛡️</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 104</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div class="module-card locked">
+                        <div class="module-center">📈</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 105</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 7 -->
+                    <div class="module-card locked">
+                        <div class="module-center">📝</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 106</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 8 -->
+                    <div class="module-card locked">
+                        <div class="module-center">🔧</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 107</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 9 -->
+                    <div class="module-card locked">
+                        <div class="module-center">🏆</div>
+                        <div class="module-content">
+                            <div class="module-title">Test 108</div>
+                            <div class="module-meta">
+                                <span>Locked</span>
+                                <span class="status-badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course View (Integrated SPA) -->
+            <section id="course-view" class="step-section hidden">
+                <div class="glass-card">
+                    <div class="course-nav-header">
+                        <button id="back-to-dashboard" class="back-btn">←</button>
+                        <div>
+                            <h4>Module 01: Personality & Tone</h4>
+                            <p style="font-size:0.8rem; color:var(--text-secondary)">Ascended Academy Training</p>
+                        </div>
+                    </div>
+
+                    <div class="video-container">
+                        <!-- Placeholder Video UI -->
+                        <div class="play-overlay">▶</div>
+                        <p style="margin-top:1rem;color:#aaa;">Lesson Video: The Art of Influence</p>
+                    </div>
+
+                    <div class="quiz-container">
+                        <div class="question-counter" id="quiz-counter">Question 1 of 3</div>
+                        <div class="course-progress-track">
+                            <div class="course-step filled"></div>
+                            <div class="course-step" id="track-2"></div>
+                            <div class="course-step" id="track-3"></div>
+                        </div>
+
+                        <div id="quiz-content">
+                            <h3 class="quiz-question-text" id="question-text">Loading...</h3>
+                            <div class="quiz-options" id="options-container">
+                                <!-- Options injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
