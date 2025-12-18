@@ -49,7 +49,7 @@
             <section id="step-1" class="step-section active">
                 <div class="glass-card">
                     <h2>Join the Elite</h2>
-                    <p class="subtitle">mock up demo</p>
+                    <p class="subtitle">Begin your ascent to financial freedom.</p>
                     <form id="register-form">
                         <div class="form-group">
                             <label>Full Name</label>
@@ -90,27 +90,41 @@
             <section id="step-3" class="step-section hidden">
                 <div class="glass-card">
                     <h2>Non-Disclosure Agreement</h2>
-                    <p class="subtitle">What you learn here, stays here.</p>
-                    <div class="nda-legal-text">
-                        <p><strong>CONFIDENTIALITY AGREEMENT - PLAYBOOK</strong></p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porttitor justo non eros
-                            posuere, bibendum molestie nibh suscipit. Curabitur quis luctus nunc, id auctor risus. Duis
-                            congue commodo tellus. Praesent non venenatis nunc. Sed condimentum nisl eu velit tincidunt,
-                            quis volutpat lorem mollis. Curabitur mollis eu libero ac accumsan. Nulla quis lorem magna.
-                            Phasellus elementum porta suscipit. Aenean in vulputate libero. Morbi sodales rutrum odio
-                            condimentum tristique. Aliquam elementum, metus sit amet volutpat accumsan, orci sapien
-                            tempus lorem, at semper turpis tellus non justo.</p>
+                    <p class="subtitle">Download, sign, and re-upload the contract.</p>
+
+                    <div style="text-align:center; margin-bottom: 2rem;">
+                        <a href="contract.html" target="_blank" class="btn-primary"
+                            style="background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); padding: 10px 20px; text-decoration: none; display: inline-block; margin-bottom:1rem;">
+                            📄 Download Contract PDF
+                        </a>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Open file, sign it (or simulate it),
+                            and upload below.</p>
                     </div>
-                    <div class="signature-area">
-                        <label>Sign with your full name:</label>
-                        <input type="text" id="signature-input" placeholder="e.g. John Doe">
-                        <label class="checkbox-container">
-                            <input type="checkbox" id="nda-check">
-                            <span class="checkmark"></span>
-                            I agree to the terms and conditions
-                        </label>
+
+                    <div class="upload-zone" id="nda-drop-zone">
+                        <div class="upload-icon">✍️</div>
+                        <h3>Upload Signed Contract</h3>
+                        <p>Drag & drop or click to browse</p>
+                        <input type="file" id="nda-upload" hidden>
                     </div>
-                    <button id="submit-nda" class="btn-primary" disabled>Sign & Enter Academy</button>
+
+                    <div id="nda-upload-progress" class="hidden" style="margin-top:1rem; text-align: center;">
+                        <p style="color: var(--accent-color);">Uploading signed document...</p>
+                        <div
+                            style="background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; margin-top: 0.5rem; overflow: hidden;">
+                            <div id="nda-progress-bar"
+                                style="background: var(--accent-color); width: 0%; height: 100%; transition: width 1.5s ease;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="nda-success-msg" class="hidden"
+                        style="text-align: center; margin-top: 1rem; color: #22c55e;">
+                        <strong>✅ Contract Verified</strong>
+                    </div>
+
+                    <button id="submit-nda" class="btn-primary" style="margin-top: 2rem;" disabled>Verify & Enter
+                        Academy</button>
                 </div>
             </section>
 
@@ -119,7 +133,7 @@
                 <!-- Dashboard Header -->
                 <div class="dashboard-header glass-card">
                     <h4>Welcome, <span class="highlight" style="color:var(--accent-color)">Member</span></h4>
-                    <p class="subtitle">Ascended Academy preview</p>
+                    <p class="subtitle">Ascended Academy Dashboard</p>
                     <div class="progress-info">
                         <span>Academy Progress: <strong id="prog-val">0%</strong></span>
                         <div class="progress-container">

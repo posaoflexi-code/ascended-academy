@@ -138,20 +138,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Step 3: NDA ---
-    const ndaCheck = document.getElementById('nda-check');
-    const signatureInput = document.getElementById('signature-input');
+    // --- Step 3: NDA ---
+    const ndaDropZone = document.getElementById('nda-drop-zone');
+    const ndaInput = document.getElementById('nda-upload');
+    const ndaProgress = document.getElementById('nda-upload-progress');
+    const ndaProgressBar = document.getElementById('nda-progress-bar');
+    const ndaSuccess = document.getElementById('nda-success-msg');
     const submitNdaBtn = document.getElementById('submit-nda');
 
-    function checkNdaValidity() {
-        if (ndaCheck.checked && signatureInput.value.trim().length > 0) {
-            submitNdaBtn.disabled = false;
-        } else {
-            submitNdaBtn.disabled = true;
-        }
-    }
+    ndaDropZone.addEventListener('click', () => ndaInput.click());
 
-    ndaCheck.addEventListener('change', checkNdaValidity);
-    signatureInput.addEventListener('input', checkNdaValidity);
+    ndaInput.addEventListener('change', () => {
+        if (ndaInput.files.length) startNdaUpload();
+    });
+
+    ndaDropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        ndaDropZone.style.borderColor = 'var(--accent-color)';
+    });
+
+    ndaDropZone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        ndaDropZone.style.borderColor = 'var(--border-color)';
+    });
+
+    ndaDropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        ndaDropZone.style.borderColor = 'var(--border-color)';
+        if (e.dataTransfer.files.length) startNdaUpload();
+    });
+
+    function startNdaUpload() {
+        ndaDropZone.classList.add('hidden');
+        ndaProgress.classList.remove('hidden');
+
+        // Simulate upload progress
+        setTimeout(() => { ndaProgressBar.style.width = '30%'; }, 100);
+        setTimeout(() => { ndaProgressBar.style.width = '70%'; }, 800);
+        setTimeout(() => {
+            ndaProgressBar.style.width = '100%';
+            setTimeout(() => {
+                ndaProgress.classList.add('hidden');
+                ndaSuccess.classList.remove('hidden');
+                submitNdaBtn.disabled = false;
+            }, 500);
+        }, 1500);
+    }
 
     submitNdaBtn.addEventListener('click', () => {
         goToStep(4);
