@@ -7,34 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentQuestionIndex = 0;
     const quizQuestions = [
         {
-            question: "What is the primary goal of the 'Ascended' tone?",
+            question: "Example of a question 1?",
             options: [
-                "To sound robotic and professional",
-                "To mirror energy and build trust",
-                "To respond as fast as possible",
-                "To use complex vocabulary"
+                "Example of an answer A",
+                "Example of an answer B (Correct)",
+                "Example of an answer C",
+                "Example of an answer D"
             ],
             correct: 1
         },
         {
-            question: "When a client expresses hesitation, you should:",
+            question: "Example of a question 2?",
             options: [
-                "Ignore it and push the price",
-                "Validate their concern, then reframe",
-                "End the conversation immediately",
-                "Send a generic discount code"
-            ],
-            correct: 1
-        },
-        {
-            question: "Which emoji usage is most appropriate for high-ticket sales?",
-            options: [
-                "🎉😎🔥 (Overuse)",
-                "None at all (Strictly formal)",
-                "Strategic matching of client's vibe",
-                "Only money bags 💰"
+                "Example of an answer A",
+                "Example of an answer B",
+                "Example of an answer C (Correct)",
+                "Example of an answer D"
             ],
             correct: 2
+        },
+        {
+            question: "Example of a question 3?",
+            options: [
+                "Example of an answer A (Correct)",
+                "Example of an answer B",
+                "Example of an answer C",
+                "Example of an answer D"
+            ],
+            correct: 0
         }
     ];
 
