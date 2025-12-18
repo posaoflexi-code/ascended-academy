@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -93,12 +94,12 @@
                     <p class="subtitle">Download, sign, and re-upload the contract.</p>
 
                     <div style="text-align:center; margin-bottom: 2rem;">
-                        <a href="contract.html" target="_blank" class="btn-primary"
-                            style="background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); padding: 10px 20px; text-decoration: none; display: inline-block; margin-bottom:1rem;">
+                        <button id="download-contract-btn" class="btn-primary"
+                            style="background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); padding: 10px 20px; cursor: pointer; display: inline-block; margin-bottom:1rem;">
                             📄 Download Contract PDF
-                        </a>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Open file, sign it (or simulate it),
-                            and upload below.</p>
+                        </button>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Just an example where we can have
+                            tailored NDA generated</p>
                     </div>
 
                     <div class="upload-zone" id="nda-drop-zone">

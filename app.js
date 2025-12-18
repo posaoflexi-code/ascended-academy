@@ -145,6 +145,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const ndaProgressBar = document.getElementById('nda-progress-bar');
     const ndaSuccess = document.getElementById('nda-success-msg');
     const submitNdaBtn = document.getElementById('submit-nda');
+    const downloadBtn = document.getElementById('download-contract-btn');
+
+    // PDF Download Handler
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', async () => {
+            const originalText = downloadBtn.innerText;
+            downloadBtn.innerText = '⚙️ Generating PDF...';
+            downloadBtn.disabled = true;
+
+            try {
+                // Fetch the contract template
+                const response = await fetch('contract.html');
+                const htmlText = await response.text();
+
+                // Create a temporary container
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = htmlText;
+                // Temporarily append to body to ensure styles might load (though html2pdf handles string too)
+                // Better: html2pdf().from(element)
+                // We need to strip the html/head/body tags or just pass the element
+                // Let's parse it
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+                const element = doc.body; // helper
+
+                // Options for PDF
+                const opt = {
+                    margin: 0.5,
+                    filename: 'Ascended_Academy_NDA.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+
+                // Generate
+                await html2pdf().set(opt).from(element).save();
+
+            } catch (err) {
+                console.error('PDF Generation Error:', err);
+                alert('Error generating PDF. Please try again.');
+            } finally {
+                downloadBtn.innerText = originalText;
+                downloadBtn.disabled = false;
+            }
+        });
+    }
 
     ndaDropZone.addEventListener('click', () => ndaInput.click());
 
