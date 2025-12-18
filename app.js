@@ -159,32 +159,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch('contract.html');
                 const htmlText = await response.text();
 
-                // Create a temporary container
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = htmlText;
-                // Temporarily append to body to ensure styles might load (though html2pdf handles string too)
-                // Better: html2pdf().from(element)
-                // We need to strip the html/head/body tags or just pass the element
-                // Let's parse it
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlText, 'text/html');
-                const element = doc.body; // helper
+                // Create a temporary container off-screen
+                // We must append to body for styles/layout to compute, but hiding it from view
+                const container = document.createElement('div');
+                container.style.position = 'absolute';
+                container.style.left = '-9999px';
+                container.style.top = '0';
+                container.style.width = '800px'; // Force width to match contract style
+                container.innerHTML = htmlText;
+
+                document.body.appendChild(container);
 
                 // Options for PDF
                 const opt = {
                     margin: 0.5,
                     filename: 'Ascended_Academy_NDA.pdf',
                     image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
+                    html2canvas: { scale: 2, useCORS: true },
                     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
                 };
 
-                // Generate
-                await html2pdf().set(opt).from(element).save();
+                // Generate and save
+                await html2pdf().set(opt).from(container).save();
+
+                // Cleanup
+                document.body.removeChild(container);
 
             } catch (err) {
                 console.error('PDF Generation Error:', err);
-                alert('Error generating PDF. Please try again.');
+                alert('Error generating PDF: ' + err.message);
             } finally {
                 downloadBtn.innerText = originalText;
                 downloadBtn.disabled = false;
